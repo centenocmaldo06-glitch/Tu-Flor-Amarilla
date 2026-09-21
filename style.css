@@ -25,7 +25,9 @@ body {
 
     color: white;
 
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+
 }
 
 
@@ -949,38 +951,28 @@ button:active {
    CORRECCIÓN PARA CELULAR
 ========================= */
 
-html,
-body {
-    width: 100%;
-    min-height: 100%;
+html {
     overflow-x: hidden;
     overflow-y: auto;
 }
 
 body {
-    margin: 0;
-}
-
-.contenedor {
-    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
     min-height: 100vh;
-    min-height: 100dvh;
 }
 
 #carta {
     min-height: 100vh;
-    min-height: 100dvh;
-    height: auto;
-    overflow-y: visible;
-    overflow-x: hidden;
-    box-sizing: border-box;
+    height: auto !important;
+    overflow: visible !important;
     padding: 30px 15px 60px;
-    align-items: flex-start;
+    box-sizing: border-box;
 }
 
 #carta .carta {
-    width: 90%;
-    max-width: 600px;
-    margin: 20px auto;
-    box-sizing: border-box;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin-bottom: 30px;
 }
