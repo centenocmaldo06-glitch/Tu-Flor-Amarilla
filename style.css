@@ -945,3 +945,42 @@ button:active {
     }
 
 }
+/* =========================
+   CORRECCIÓN PARA CELULAR
+========================= */
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body {
+    margin: 0;
+}
+
+.contenedor {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+#carta {
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: auto;
+    overflow-y: visible;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    padding: 30px 15px 60px;
+    align-items: flex-start;
+}
+
+#carta .carta {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
