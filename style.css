@@ -1,0 +1,947 @@
+/* =========================
+   CONFIGURACIÓN GENERAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family: Georgia, serif;
+
+    background:
+        linear-gradient(
+            180deg,
+            #071a2b,
+            #0b2b3f,
+            #071a2b
+        );
+
+    color: white;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   CONTENEDOR
+========================= */
+
+.contenedor {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    position: relative;
+
+}
+
+
+/* =========================
+   PANTALLAS
+========================= */
+
+.pantalla {
+
+    position: absolute;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 1s ease;
+
+}
+
+
+.pantalla.activa {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+/* =========================
+   PANTALLA INICIAL
+========================= */
+
+#inicio {
+
+    background:
+        radial-gradient(
+            circle at center,
+            #16415b,
+            #071a2b 70%
+        );
+
+}
+
+
+#inicio h1 {
+
+    font-size:
+        clamp(
+            45px,
+            10vw,
+            75px
+        );
+
+    color: #ffd83d;
+
+    margin-bottom: 25px;
+
+    text-shadow:
+
+        0 0 10px
+        rgba(255, 216, 61, 0.5),
+
+        0 0 25px
+        rgba(255, 216, 61, 0.2);
+
+}
+
+
+#inicio p {
+
+    font-size: 20px;
+
+    color: #dcecf5;
+
+    margin-bottom: 30px;
+
+}
+
+
+/* =========================
+   BOTONES
+========================= */
+
+button {
+
+    padding:
+        15px 35px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #ffd83d;
+
+    color: #17202a;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+
+        0 0 15px
+        rgba(255, 216, 61, 0.3);
+
+    transition:
+        all 0.3s ease;
+
+}
+
+
+button:hover {
+
+    transform:
+        scale(1.08);
+
+    box-shadow:
+
+        0 0 30px
+        rgba(255, 216, 61, 0.6);
+
+}
+
+
+button:active {
+
+    transform:
+        scale(0.95);
+
+}
+
+
+/* =========================
+   PANTALLA DE LA FLOR
+========================= */
+
+#flor {
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            #16415b,
+            #071a2b 70%
+        );
+
+}
+
+
+.mensaje-flor {
+
+    position: absolute;
+
+    top: 12%;
+
+    width: 90%;
+
+    font-size: 19px;
+
+    color: #dcecf5;
+
+}
+
+
+/* =========================
+   JARDÍN
+========================= */
+
+.jardin {
+
+    position: relative;
+
+    width: 300px;
+
+    height: 430px;
+
+}
+
+
+/* =========================
+   TALLO
+========================= */
+
+.tallo {
+
+    position: absolute;
+
+    width: 12px;
+    height: 250px;
+
+    background: #3f9144;
+
+    bottom: 0;
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        scaleY(0);
+
+    transform-origin: bottom;
+
+    border-radius: 20px;
+
+    animation:
+        crecerTallo 2s ease forwards;
+
+    animation-delay: 0.5s;
+}
+
+
+/* =========================
+   HOJAS
+========================= */
+
+.hoja {
+
+    position: absolute;
+
+    width: 80px;
+    height: 35px;
+
+    background: #4da84f;
+
+    border-radius:
+        100% 0 100% 0;
+
+    bottom: 120px;
+
+    opacity: 0;
+}
+
+
+.hoja-izquierda {
+
+    left: 65px;
+
+    transform:
+        rotate(-25deg)
+        scale(0);
+
+    animation:
+        aparecerHoja 1s ease forwards;
+
+    animation-delay: 2.7s;
+}
+
+
+.hoja-derecha {
+
+    right: 65px;
+
+    transform:
+        scaleX(-1)
+        rotate(-25deg)
+        scale(0);
+
+    animation:
+        aparecerHojaDerecha 1s ease forwards;
+
+    animation-delay: 3.1s;
+}
+
+
+/* =========================
+   FLOR
+========================= */
+
+.flor-amarilla {
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    top: 30px;
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        scale(0);
+
+    animation:
+        aparecerFlor 1.5s ease forwards;
+
+    /* Primero tallo → hojas → flor */
+    animation-delay: 3.8s;
+}
+
+
+/* =========================
+   PÉTALOS
+========================= */
+
+.petalo {
+
+    position: absolute;
+
+    width: 75px;
+    height: 110px;
+
+    left: 50%;
+    top: 50%;
+
+    background: #ffd83d;
+
+    border-radius:
+        50% 50% 45% 45%;
+
+    transform-origin:
+        center center;
+
+    box-shadow:
+        0 0 15px
+        rgba(255, 216, 61, 0.4);
+
+}
+
+
+/* Posición de cada pétalo */
+
+.petalo-1 {
+
+    transform:
+        translate(-50%, -50%)
+        rotate(0deg)
+        translateY(-55px);
+
+}
+
+
+.petalo-2 {
+
+    transform:
+        translate(-50%, -50%)
+        rotate(45deg)
+        translateY(-55px);
+
+}
+
+
+.petalo-3 {
+
+    transform:
+        translate(-50%, -50%)
+        rotate(90deg)
+        translateY(-55px);
+
+}
+
+
+.petalo-4 {
+
+    transform:
+        translate(-50%, -50%)
+        rotate(135deg)
+        translateY(-55px);
+
+}
+
+
+.petalo-5 {
+
+    transform:
+        translate(-50%, -50%)
+        rotate(180deg)
+        translateY(-55px);
+
+}
+
+
+.petalo-6 {
+
+    transform:
+        translate(-50%, -50%)
+        rotate(225deg)
+        translateY(-55px);
+
+}
+
+
+.petalo-7 {
+
+    transform:
+        translate(-50%, -50%)
+        rotate(270deg)
+        translateY(-55px);
+
+}
+
+
+.petalo-8 {
+
+    transform:
+        translate(-50%, -50%)
+        rotate(315deg)
+        translateY(-55px);
+
+}
+
+
+/* =========================
+   CENTRO DE LA FLOR
+========================= */
+
+.centro-flor {
+
+    position: absolute;
+
+    width: 70px;
+    height: 70px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            #70450e 0%,
+            #925d13 45%,
+            #b4771b 100%
+        );
+
+    box-shadow:
+
+        0 0 12px
+        rgba(120, 75, 10, 0.5),
+
+        inset 0 0 0 5px
+        #c28724;
+
+}
+
+
+/* =========================
+   MENSAJE
+========================= */
+
+.mensaje-final {
+
+    position: absolute;
+
+    bottom: 13%;
+
+    width: 90%;
+
+    text-align: center;
+
+    font-size: 19px;
+
+    color: #ffffff;
+
+    opacity: 0;
+
+    animation:
+        aparecerMensaje
+        2s ease forwards;
+
+    /* Después de que termina la flor */
+    animation-delay: 5.8s;
+
+}
+
+
+/* =========================
+   BOTÓN
+========================= */
+
+#abrir-mensaje {
+
+    position: absolute;
+
+    bottom: 5%;
+
+    opacity: 0;
+
+    animation:
+        aparecerMensaje
+        1.5s ease forwards;
+
+    animation-delay: 7s;
+
+}
+
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+@keyframes crecerTallo {
+
+    from {
+
+        transform:
+            translateX(-50%)
+            scaleY(0);
+
+    }
+
+    to {
+
+        transform:
+            translateX(-50%)
+            scaleY(1);
+
+    }
+
+}
+
+
+@keyframes aparecerHoja {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            rotate(-25deg)
+            scale(0);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            rotate(-25deg)
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes aparecerHojaDerecha {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scaleX(-1)
+            rotate(-25deg)
+            scale(0);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scaleX(-1)
+            rotate(-25deg)
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes aparecerFlor {
+
+    from {
+
+        transform:
+            translateX(-50%)
+            scale(0);
+
+    }
+
+    to {
+
+        transform:
+            translateX(-50%)
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes aparecerMensaje {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+/* =========================
+   MENSAJE DE LA FLOR
+========================= */
+
+.mensaje-final {
+
+    position: absolute;
+
+    bottom: 13%;
+
+    width: 90%;
+
+    text-align: center;
+
+    font-size: 19px;
+
+    color: #ffffff;
+
+    opacity: 0;
+
+    animation:
+
+        aparecerMensaje
+        2s ease forwards;
+
+    animation-delay: 5s;
+
+}
+
+
+/* =========================
+   BOTÓN DEL MENSAJE
+========================= */
+
+#abrir-mensaje {
+
+    position: absolute;
+
+    bottom: 5%;
+
+    opacity: 0;
+
+    animation:
+
+        aparecerMensaje
+        1.5s ease forwards;
+
+    animation-delay: 6s;
+
+}
+
+
+/* =========================
+   CARTA
+========================= */
+
+#carta {
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            #16415b,
+            #071a2b 75%
+        );
+
+    overflow-y: auto;
+
+    padding: 30px 0;
+
+}
+
+
+.carta {
+
+    width: 85%;
+
+    max-width: 500px;
+
+    padding: 35px 28px;
+
+    background:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    border:
+
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        );
+
+    border-radius: 25px;
+
+    box-shadow:
+
+        0 20px 60px
+        rgba(0, 0, 0, 0.3);
+
+    backdrop-filter:
+        blur(10px);
+
+    animation:
+
+        aparecerCarta
+        1s ease;
+
+}
+
+
+.corazon {
+
+    font-size: 45px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.carta h2 {
+
+    color: #ffd83d;
+
+    font-size: 35px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.carta p {
+
+    color: #e6f3fa;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+    margin-bottom: 18px;
+
+}
+
+
+.firma {
+
+    margin-top: 25px;
+
+    color: #9fd5ff;
+
+    font-size: 19px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+@keyframes crecerTallo {
+
+    from {
+
+        transform:
+            translateX(-50%)
+            scaleY(0);
+
+    }
+
+    to {
+
+        transform:
+            translateX(-50%)
+            scaleY(1);
+
+    }
+
+}
+
+
+@keyframes aparecerHoja {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0)
+            rotate(-25deg);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+
+}
+
+
+@keyframes aparecerFlor {
+
+    from {
+
+        transform:
+            translateX(-50%)
+            scale(0);
+
+    }
+
+    to {
+
+        transform:
+            translateX(-50%)
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes aparecerMensaje {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+@keyframes aparecerCarta {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0.95);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
